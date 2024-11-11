@@ -10,13 +10,6 @@ AJAX support for dynamically loading quiz content.
 Tools for password quality checks and email validation.
 Requirements
 
-The following tools are required to run the application:
-
-Java Development Kit (JDK) version 17 or higher.
-Apache Maven version 3.6 or above.
-Internet access to retrieve dependencies.
-Project Organization
-
 Java source files are located in src/main/java, containing controllers and models.
 Templates for the user interface are found in src/main/resources/templates.
 Static assets, like CSS for styling, are in src/main/resources/static/css.
