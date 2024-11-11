@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .home-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .home-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .home-links li {
+            margin: 15px 0;
+        }
+
+        .home-link-btn {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .home-link-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Application Portal</h1>
+    <div class="home-container">
+        <p>Select a feature below:</p>
+        <ul class="home-links">
+            <li><a href="/password-checker"><button class="home-link-btn">Password Quality Check</button></a></li>
+            <li><a href="/email-validator"><button class="home-link-btn">Email Validator</button></a></li>
+            <li><a href="/quiz"><button class="home-link-btn">Take the Quiz</button></a></li>
+        </ul>
+    </div>
+</body>
+</html>

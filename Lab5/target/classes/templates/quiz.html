@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dragon Ball Z Quiz</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h2 {
+            color: #ffcc00;
+            margin-top: 30px;
+        }
+
+        .quiz-container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: #1c1c1c;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        #quiz-result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dragon Ball Z Quiz</h2>
+    <div id="quiz-container" class="quiz-container"></div>
+    <button id="submit-quiz">Submit Quiz</button>
+    <div id="quiz-result"></div>
+
+    <script>
+        $(document).ready(function () {
+            // Set up the quiz questions for Dragon Ball Z
+            const quizQuestions = [
+                {
+                    question: "Who is the Legendary Super Saiyan?",
+                    options: ["Bardock", "Broly", "Goku", "Trunks"]
+                },
+                {
+                    question: "In which movie did we first see Gogeta",
+                    options: ["Broly: Second Coming", "Fusion Reborn", "The Return of Cooler", "Battle of Gods"]
+                },
+                {
+                    question: "Who was Goku’s main rival in the original Dragon Ball series?",
+                    options: ["Piccolo", "Vegeta", "Krillin", "Yamcha"]
+                },
+                {
+                    question: "What technique did Goku learn from King Kai?",
+                    options: ["Destructo Disc", "Instant Transmission", "Kamehameha", "Kaio-ken"]
+                },
+                {
+                    question: "Why did vegeta shave his mustache",
+                    options: ["it made him look like a total geek", "it was not the saiyan way", "to get ssj 4", "Piccolo"]
+                }
+            ];
+
+            const correctAnswers = ["Bardock", "Fusion Reborn", "Piccolo", "Kaio-ken", "it made him look like a total geek"];
+
+            // Display quiz questions dynamically
+            quizQuestions.forEach((question, index) => {
+                let questionHtml = `<div class="quiz-question"><p><b>${question.question}</b></p><form>`;
+                question.options.forEach((option, optionIndex) => {
+                    questionHtml += `
+                        <div>
+                            <input type="radio" name="question-${index}" id="question-${index}-option-${optionIndex}" value="${option}">
+                            <label for="question-${index}-option-${optionIndex}">${option}</label>
+                        </div>
+                    `;
+                });
+                questionHtml += '</form></div>';
+                $("#quiz-container").append(questionHtml);
+            });
+
+            // Handle quiz submission
+            $('#submit-quiz').click(function () {
+                let score = 0;
+                correctAnswers.forEach(function (answer, index) {
+                    let selectedOption = $(`input[name="question-${index}"]:checked`).val();
+                    if (selectedOption === answer) {
+                        score++;
+                    }
+                });
+
+                const resultMessage = `You scored ${score} out of ${correctAnswers.length}!`;
+                $("#quiz-result").text(resultMessage);
+            });
+        });
+    </script>
+</body>
+</html>

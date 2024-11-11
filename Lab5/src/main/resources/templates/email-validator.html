@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email Validation</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            font-size: 1.1em;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .email-validation-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .validate-email-btn {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .validate-email-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #email-feedback {
+            margin-top: 20px;
+            font-size: 1.1em;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .valid-feedback {
+            color: #28a745;
+            background-color: #d4edda;
+        }
+
+        .invalid-feedback {
+            color: #dc3545;
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <h2>Email Validation</h2>
+    <div class="email-validation-container">
+        <label for="email-input">Enter your email:</label><br>
+        <input type="text" id="email-input" class="email-input" placeholder="e.g., user@example.com" title="Format: user@example.com">
+        <button id="validate-email" class="validate-email-btn">Validate Email</button>
+    </div>
+    <div id="email-feedback"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#validate-email').click(function () {
+                const email = $('#email-input').val();
+                if (!email) {
+                    $('#email-feedback').text('Please enter an email address.').addClass('invalid-feedback').removeClass('valid-feedback');
+                    return;
+                }
+
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (emailPattern.test(email)) {
+                    $('#email-feedback').text('The email address is valid.').addClass('valid-feedback').removeClass('invalid-feedback');
+                } else {
+                    $('#email-feedback').text('The email address is invalid. Please enter a valid email.').addClass('invalid-feedback').removeClass('valid-feedback');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

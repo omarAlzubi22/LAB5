@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Marvel Quiz</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-question {
+            margin: 20px 0;
+        }
+
+        .quiz-options input {
+            margin-right: 10px;
+        }
+
+        #submit-quiz {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #quiz-result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h2>Marvel Quiz</h2>
+    <div class="quiz-container" id="quiz-container"></div>
+    <button id="submit-quiz">Submit Quiz</button>
+    <div id="quiz-result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Define Marvel questions and answers
+            const questions = [
+                {
+                    question: "What is the name of Thor's hammer?",
+                    options: ["Stormbreaker", "Mjolnir", "Axe of Thunder", "Thunderstrike"],
+                    answer: "Mjolnir"
+                },
+                {
+                    question: "Who is Tony Stark's AI assistant?",
+                    options: ["JARVIS", "FRIDAY", "HOMER", "SIRI"],
+                    answer: "JARVIS"
+                },
+                {
+                    question: "Which Infinity Stone is located on Vormir?",
+                    options: ["Soul Stone", "Time Stone", "Mind Stone", "Reality Stone"],
+                    answer: "Soul Stone"
+                },
+                {
+                    question: "What is Black Widow’s real name?",
+                    options: ["Natasha Romanoff", "Wanda Maximoff", "Maria Hill", "Sharon Carter"],
+                    answer: "Natasha Romanoff"
+                },
+                {
+                    question: "Which character is known as the 'Winter Soldier'?",
+                    options: ["Steve Rogers", "Bucky Barnes", "Sam Wilson", "Clint Barton"],
+                    answer: "Bucky Barnes"
+                }
+            ];
+
+            // Display questions
+            questions.forEach(function (question, index) {
+                let questionHtml = `<div class="quiz-question"><p><b>${question.question}</b></p><form class="quiz-options">`;
+                question.options.forEach(function (option) {
+                    questionHtml += `<label><input type="radio" name="question-${index}" value="${option}"> ${option}</label><br>`;
+                });
+                questionHtml += '</form></div>';
+                $("#quiz-container").append(questionHtml);
+            });
+
+            // Handle quiz submission
+            $('#submit-quiz').click(function () {
+                let score = 0;
+                questions.forEach((question, index) => {
+                    const selected = $(`input[name="question-${index}"]:checked`).val();
+                    if (selected === question.answer) score++;
+                });
+                $("#quiz-result").text(`You scored ${score} out of ${questions.length}`);
+            });
+        });
+    </script>
+</body>
+</html>

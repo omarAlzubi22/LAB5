@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e2e2e;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 40px;
+            background: #3c3c3c;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #ffda79;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            margin: 15px 0;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ffffff;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+            flex: 1;
+        }
+
+        .btn-validate {
+            background-color: #ffda79;
+            color: #333;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-validate:hover {
+            background-color: #ffd451;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .feedback-valid {
+            color: #88e085;
+        }
+
+        .feedback-invalid {
+            color: #e08585;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Verification</h1>
+        <p>Please enter your email below to verify:</p>
+        <div class="input-container">
+            <input type="text" id="email" placeholder="Email Address">
+            <button id="validate-btn" class="btn-validate">Verify</button>
+        </div>
+        <div id="feedback" class="feedback"></div>
+        <audio id="validation-sound" preload="auto">
+            <source src="/sounds/verify-sound.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#validate-btn').click(function () {
+                const email = $('#email').val();
+                if (!email) {
+                    $('#feedback').text('Please enter an email address.')
+                        .removeClass('feedback-valid').addClass('feedback-invalid');
+                    return;
+                }
+
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                const isValid = emailPattern.test(email);
+                const feedbackText = isValid ? 'The email is valid!' : 'Invalid email. Try again.';
+                const feedbackClass = isValid ? 'feedback-valid' : 'feedback-invalid';
+
+                $('#feedback').text(feedbackText).attr('class', 'feedback ' + feedbackClass);
+
+                if (isValid) {
+                    $('#validation-sound')[0].play();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
