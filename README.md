@@ -9,7 +9,6 @@ Thymeleaf integration to render a responsive user interface for quizzes.
 AJAX support for dynamically loading quiz content.
 Tools for password quality checks and email validation.
 
-Requirements:
 
 Java source files are located in src/main/java, containing controllers and models.
 Templates for the user interface are found in src/main/resources/templates.
