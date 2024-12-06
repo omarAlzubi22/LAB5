@@ -19,29 +19,29 @@ public class QuizController {
         List<QuizQuestion> quizQuestions = new ArrayList<>();
 
         quizQuestions.add(new QuizQuestion(
-                "What is the name of the plumber character created by Nintendo?",
-                new String[]{"Mario", "Luigi", "Wario", "Toad"},
-                "Mario"));
+                "What is the name of Thor's Hammer?",
+                new String[]{"Stormbreaker", "Mjolnir", "Axe of Thunder", "Thunderstrike"},
+                "Stormbreaker"));
 
         quizQuestions.add(new QuizQuestion(
-                "Which video game series features the fictional city of Vice City?",
-                new String[]{"Grand Theft Auto", "Saints Row", "Watch Dogs", "Mafia"},
-                "Grand Theft Auto"));
+                "Who is Tony Stark's AI assistant",
+                new String[]{"JARVIS", "FRIDAY", "HOMER", "SIRI"},
+                "JARVIS"));
 
         quizQuestions.add(new QuizQuestion(
-                "What is the highest level a player can reach in Pac-Man?",
-                new String[]{"Level 99", "Level 256", "Level 150", "Level 300"},
-                "Level 256"));
+                "Which Infinity Stone is located on Vormir?",
+                new String[]{"Soul Stone", "Time Stone", "Mind Stone", "Reality Stone"},
+                "Soul Stone"));
 
         quizQuestions.add(new QuizQuestion(
-                "Which game is known for the quote 'War. War never changes.'?",
-                new String[]{"Fallout", "Call of Duty", "Battlefield", "Halo"},
-                "Fallout"));
+                "What is Black Widow’s real name?",
+                new String[]{"Natasha Romanoff", "Wanda Maximoff", "Maria Hill", "Sharon Carter"},
+                "Natasha Romanoff"));
 
         quizQuestions.add(new QuizQuestion(
-                "In which game does a character named Geralt hunt monsters for a living?",
-                new String[]{"The Witcher", "Dark Souls", "Bloodborne", "Skyrim"},
-                "The Witcher"));
+                "Which character is known as the 'Winter Soldier'?",
+                new String[]{"Steve Rogers", "Bucky Barnes", "Sam Wilson", "Clint Barton"},
+                "Bucky Barnes"));
 
         return quizQuestions;
     }
